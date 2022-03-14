@@ -1,0 +1,237 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  height: 75vh;
+  background-image: url(./images/background.jpg);
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  text-align: center;
+}
+
+header h1 {
+  font-family: "Cinzel", serif;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.learn-spells-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+.button {
+  background-color: #946347;
+  border: 1px solid #946347;
+  color: #fff;
+  font-size: 14px;
+  padding: 0.8em 1.5em;
+  border-radius: 9px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.5s ease-in;
+}
+
+.button:hover {
+  background-color: #fff;
+  border: 1px solid #946347;
+  color: #946347;
+}
+
+.spells {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #191635;
+}
+
+.spells__name {
+  font-size: 1.5rem;
+  margin-bottom: 0.3em;
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+}
+
+.spells__name::before {
+  content: "🪄 ";
+}
+
+.spells__description {
+  margin-bottom: 2rem;
+  margin-left: 2.5rem;
+}
+
+.spells__description ul {
+  margin: 1rem 0;
+}
+
+.bold {
+  font-weight: 600;
+}
+.faq--extra:hover {
+  text-decoration: underline;
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  background-image: linear-gradient(
+      rgba(68, 53, 44, 0.6),
+      rgba(68, 53, 44, 0.6)
+    ),
+    url(images/background-2.jpg);
+  background-size: cover;
+  background-position: center 40%;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.video-heading {
+  margin-top: 0.5em;
+  font-weight: 500;
+}
+
+.quote-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  color: #191635;
+}
+
+.quote {
+  text-align: center;
+  font-size: 1.2rem;
+  padding-bottom: 0.5em;
+}
+
+.author-link {
+  color: #946347;
+  text-decoration: none;
+}
+
+.author-link:visited {
+  color: #946347;
+}
+
+.author-link:hover {
+  text-decoration: underline;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  background-color: #7c6252;
+  padding: 2em;
+}
+
+.links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  position: sticky;
+  bottom: 0;
+  background-color: #fdeded;
+  padding: 1em;
+}
+
+footer a {
+  color: #946347;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-text {
+  color: #946347;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  iframe {
+    width: 300px;
+  }
+
+  header h1 {
+    font-size: 40px;
+  }
+
+  .spells__description {
+    margin-bottom: 2rem;
+    margin-left: 0;
+  }
+
+  .spells__description ul {
+    margin: 0;
+    padding: 10px 20px 0 20px;
+  }
+
+  .video-heading {
+    font-size: 16px;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .max-width {
+    max-width: 80%;
+  }
+
+  .quote-container {
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .quote {
+    font-size: 16px;
+  }
+
+  .author {
+    font-size: 14px;
+  }
+
+  .links {
+    font-size: 12px;
+  }
+
+  .button {
+    display: inline-block;
+  }
+}
