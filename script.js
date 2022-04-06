@@ -57,6 +57,31 @@ const closeOtherSpellsDesc = (currentSpellDesc) => {
   });
 };
 
+const showAllSpells = () => {
+  const allSpells = document.querySelectorAll("#spells .spell__container");
+
+  allSpells.forEach((spellContainer) => {
+    const spellName = spellContainer.querySelector(".spells__name");
+    const spellDesc = spellContainer.querySelector(".spells__description");
+
+    spellDesc.classList.remove("hidden");
+    spellName.classList.add("wand-bottom");
+    spellName.classList.add("wand");
+  });
+};
+const closeAllSpells = () => {
+  const allSpells = document.querySelectorAll("#spells .spell__container");
+
+  allSpells.forEach((spellContainer) => {
+    const spellName = spellContainer.querySelector(".spells__name");
+    const spellDesc = spellContainer.querySelector(".spells__description");
+
+    spellDesc.classList.add("hidden");
+    spellName.classList.remove("wand-bottom");
+    spellName.classList.add("wand");
+  });
+};
+
 const spellList = () => {
   const spellData = [
     {
@@ -172,6 +197,12 @@ const spellList = () => {
 
     spellsName.onclick = () => {
       handleClickOnSpell(spellsName, spellsDesc);
+    };
+    document.querySelector(".show-spells").onclick = () => {
+      showAllSpells();
+    };
+    document.querySelector(".hide-spells").onclick = () => {
+      closeAllSpells();
     };
 
     const spellContainer = createSpellContainer(spellsName, spellsDesc);
