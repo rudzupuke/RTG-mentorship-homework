@@ -1,3 +1,5 @@
+"use strict";
+
 const spellList = () => {
   const spellData = [
     {
@@ -98,4 +100,44 @@ const spellList = () => {
             >`,
     },
   ];
+
+  const spellsElement = document.getElementById("spells");
+  spellsElement.innerHTML = "";
+
+  const openSpellsDesc = (spellsDesc, spellsName) => {
+    const isHidden = spellsDesc.className.includes("hidden");
+
+    if (!isHidden) {
+      spellsDesc.className = "spells__description hidden";
+      spellsName.className = "spells__name wand";
+    } else {
+      spellsDesc.className = "spells__description";
+      spellsName.className = "spells__name wand-bottom";
+    }
+  };
+
+  spellData.forEach((spellEntry) => {
+    const { spell, description } = spellEntry;
+
+    const spellContainer = document.createElement("div");
+    spellContainer.className = "spell__container";
+
+    const spellsName = document.createElement("div");
+    spellsName.className = "spells__name wand";
+    spellsName.innerHTML = spell;
+
+    const spellsDesc = document.createElement("div");
+    spellsDesc.className = "spells__description hidden";
+    spellsDesc.innerHTML = description;
+
+    spellsName.onclick = () => {
+      openSpellsDesc(spellsDesc, spellsName);
+    };
+
+    spellContainer.append(spellsName);
+    spellContainer.append(spellsDesc);
+    spellsElement.append(spellContainer);
+  });
 };
+
+spellList();
