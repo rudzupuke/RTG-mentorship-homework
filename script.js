@@ -40,20 +40,30 @@ const toggleOneSpellsDesc = (spellsDesc, spellsName) => {
   spellsDesc.classList.toggle("hidden");
 };
 
+const closeSpell = (spellName, spellDesc) => {
+  spellDesc.classList.add("hidden");
+  spellName.classList.remove("wand-bottom");
+  spellName.classList.add("wand");
+};
+
+const selectSpellNameAndDesc = (spellContainer) => {
+  const spellName = spellContainer.querySelector(".spells__name");
+  const spellDesc = spellContainer.querySelector(".spells__description");
+
+  return { spellName, spellDesc };
+};
+
 const closeOtherSpellsDesc = (currentSpellDesc) => {
-  const allSpells = document.querySelectorAll("#spells .spell__container");
+  const allSpells = document.querySelectorAll(".spell__container");
 
   allSpells.forEach((spellContainer) => {
-    const spellName = spellContainer.querySelector(".spells__name");
-    const spellDesc = spellContainer.querySelector(".spells__description");
+    const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
 
     if (currentSpellDesc === spellDesc) {
       return;
     }
 
-    spellDesc.classList.add("hidden");
-    spellName.classList.remove("wand-bottom");
-    spellName.classList.add("wand");
+    closeSpell(spellName, spellDesc);
   });
 };
 
@@ -61,8 +71,7 @@ const showAllSpells = () => {
   const allSpells = document.querySelectorAll("#spells .spell__container");
 
   allSpells.forEach((spellContainer) => {
-    const spellName = spellContainer.querySelector(".spells__name");
-    const spellDesc = spellContainer.querySelector(".spells__description");
+    const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
 
     spellDesc.classList.remove("hidden");
     spellName.classList.add("wand-bottom");
@@ -73,12 +82,9 @@ const closeAllSpells = () => {
   const allSpells = document.querySelectorAll("#spells .spell__container");
 
   allSpells.forEach((spellContainer) => {
-    const spellName = spellContainer.querySelector(".spells__name");
-    const spellDesc = spellContainer.querySelector(".spells__description");
+    const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
 
-    spellDesc.classList.add("hidden");
-    spellName.classList.remove("wand-bottom");
-    spellName.classList.add("wand");
+    closeSpell(spellName, spellDesc);
   });
 };
 
@@ -198,9 +204,11 @@ const spellList = () => {
     spellsName.onclick = () => {
       handleClickOnSpell(spellsName, spellsDesc);
     };
+
     document.querySelector(".show-spells").onclick = () => {
       showAllSpells();
     };
+
     document.querySelector(".hide-spells").onclick = () => {
       closeAllSpells();
     };
