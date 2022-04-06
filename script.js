@@ -1,3 +1,87 @@
+"use strict";
+
+// HELPER FUNCTIONS //
+
+const createAllSpellContainer = () => {
+  const spellsElement = document.getElementById("spells");
+  spellsElement.innerHTML = "";
+
+  return spellsElement;
+};
+
+const createSpellContainer = (spellsName, spellsDesc) => {
+  const spellContainer = document.createElement("div");
+  spellContainer.className = "spell__container";
+  spellContainer.append(spellsName);
+  spellContainer.append(spellsDesc);
+
+  return spellContainer;
+};
+
+const createSpellsName = (spell) => {
+  const spellsName = document.createElement("div");
+  spellsName.className = "spells__name wand";
+  spellsName.innerHTML = spell;
+
+  return spellsName;
+};
+
+const createSpellsDesc = (description) => {
+  const spellsDesc = document.createElement("div");
+  spellsDesc.className = "spells__description hidden";
+  spellsDesc.innerHTML = description;
+
+  return spellsDesc;
+};
+
+const toggleOneSpellsDesc = (spellsDesc, spellsName) => {
+  spellsName.classList.toggle("wand");
+  spellsName.classList.toggle("wand-bottom");
+  spellsDesc.classList.toggle("hidden");
+};
+
+const closeOtherSpellsDesc = (currentSpellDesc) => {
+  const allSpells = document.querySelectorAll("#spells .spell__container");
+
+  allSpells.forEach((spellContainer) => {
+    const spellName = spellContainer.querySelector(".spells__name");
+    const spellDesc = spellContainer.querySelector(".spells__description");
+
+    if (currentSpellDesc === spellDesc) {
+      return;
+    }
+
+    spellDesc.classList.add("hidden");
+    spellName.classList.remove("wand-bottom");
+    spellName.classList.add("wand");
+  });
+};
+
+const showAllSpells = () => {
+  const allSpells = document.querySelectorAll("#spells .spell__container");
+
+  allSpells.forEach((spellContainer) => {
+    const spellName = spellContainer.querySelector(".spells__name");
+    const spellDesc = spellContainer.querySelector(".spells__description");
+
+    spellDesc.classList.remove("hidden");
+    spellName.classList.add("wand-bottom");
+    spellName.classList.add("wand");
+  });
+};
+const closeAllSpells = () => {
+  const allSpells = document.querySelectorAll("#spells .spell__container");
+
+  allSpells.forEach((spellContainer) => {
+    const spellName = spellContainer.querySelector(".spells__name");
+    const spellDesc = spellContainer.querySelector(".spells__description");
+
+    spellDesc.classList.add("hidden");
+    spellName.classList.remove("wand-bottom");
+    spellName.classList.add("wand");
+  });
+};
+
 const spellList = () => {
   const spellData = [
     {
@@ -53,49 +137,78 @@ const spellList = () => {
     {
       spell: "Unforgivable curses",
       description: ` The Unforgivable Curses are three of the most powerful and sinister
-            spells known to the wizarding world:
-            <ul>
-              <li>
-                <span class="bold">Avada Kedavra (Killing curse)</span>
-                <ul>
-                  <li>
-                    When cast successfully on a living person or creature, the curse
-                    causea instantaneous and painless death, without causing any
-                    injury to the body, and without any trace of violence.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span class="bold">Crucio (Cruciatus curse)</span>
-                <ul>
-                  <li>
-                    When cast successfully on a fellow human being or living
-                    creature, the curse inflicted intense, excruciating physical
-                    pain on the victim, and would result in insanity if the victim
-                    was subjected to it for a prolonged time.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <span class="bold">Imperio (Imperius curse)</span>
-                <ul>
-                  <li>
-                    When cast successfully, the curse placed the victim completely
-                    under the caster's control, though a person with exceptional
-                    strength of will could resist it.
-                  </li>
-                </ul>
-              </li>
-            </ul>`,
+              spells known to the wizarding world:
+              <ul>
+                <li>
+                  <span class="bold">Avada Kedavra (Killing curse)</span>
+                  <ul>
+                    <li>
+                      When cast successfully on a living person or creature, the curse
+                      causea instantaneous and painless death, without causing any
+                      injury to the body, and without any trace of violence.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="bold">Crucio (Cruciatus curse)</span>
+                  <ul>
+                    <li>
+                      When cast successfully on a fellow human being or living
+                      creature, the curse inflicted intense, excruciating physical
+                      pain on the victim, and would result in insanity if the victim
+                      was subjected to it for a prolonged time.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="bold">Imperio (Imperius curse)</span>
+                  <ul>
+                    <li>
+                      When cast successfully, the curse placed the victim completely
+                      under the caster's control, though a person with exceptional
+                      strength of will could resist it.
+                    </li>
+                  </ul>
+                </li>
+              </ul>`,
     },
     {
       spell: "Want to learn more spells?",
       description: `You can do by clicking here 👉
-            <a class="button"
-              href="https://harrypotter.fandom.com/wiki/List_of_spells"
-              target="_blank"
-              >Learn More</a
-            >`,
+              <a class="button"
+                href="https://harrypotter.fandom.com/wiki/List_of_spells"
+                target="_blank"
+                >Learn More</a
+              >`,
     },
   ];
+
+  const allSpellsContainer = createAllSpellContainer();
+  const handleClickOnSpell = (spellsName, spellsDesc) => {
+    closeOtherSpellsDesc(spellsDesc);
+    toggleOneSpellsDesc(spellsDesc, spellsName);
+  };
+
+  spellData.forEach((spellEntry) => {
+    const { spell, description } = spellEntry;
+
+    const spellsName = createSpellsName(spell);
+    const spellsDesc = createSpellsDesc(description);
+
+    spellsName.onclick = () => {
+      handleClickOnSpell(spellsName, spellsDesc);
+    };
+    document.querySelector(".show-spells").onclick = () => {
+      showAllSpells();
+    };
+    document.querySelector(".hide-spells").onclick = () => {
+      closeAllSpells();
+    };
+
+    const spellContainer = createSpellContainer(spellsName, spellsDesc);
+
+    allSpellsContainer.append(spellContainer);
+  });
 };
+
+spellList();
