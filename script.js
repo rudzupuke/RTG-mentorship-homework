@@ -2,6 +2,21 @@
 
 // HELPER FUNCTIONS //
 
+const createSearchInputField = () => {
+  const searchInput = document.createElement("input");
+  searchInput.setAttribute("type", "text");
+  searchInput.setAttribute("placeholder", "Spell...");
+
+  return searchInput;
+};
+
+const createSearchButton = () => {
+  const searchButton = document.createElement("button");
+  searchButton.innerText = "Search Spell";
+
+  return searchButton;
+};
+
 const createAllSpellContainer = () => {
   const spellsElement = document.getElementById("spells");
   spellsElement.innerHTML = "";
@@ -189,6 +204,11 @@ const spellList = () => {
     },
   ];
 
+  const searchInput = createSearchInputField();
+  document.getElementById("search-container").appendChild(searchInput);
+  const searchButton = createSearchButton();
+  document.getElementById("search-container").appendChild(searchButton);
+
   const allSpellsContainer = createAllSpellContainer();
   const handleClickOnSpell = (spellsName, spellsDesc) => {
     closeOtherSpellsDesc(spellsDesc);
@@ -217,6 +237,26 @@ const spellList = () => {
 
     allSpellsContainer.append(spellContainer);
   });
+
+  searchInput.oninput = (e) => {
+    const allSpells = document.querySelectorAll("#spells .spell__container");
+    console.log(e.target.value);
+
+    allSpells.forEach((spellContainer) => {
+      const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
+      spellName.classList.add("hidden");
+      spellDesc.classList.add("hidden");
+      if (
+        spellName.innerText.toLowerCase().includes(e.target.value) ||
+        spellName.innerText.includes(e.target.value)
+      ) {
+        spellDesc.classList.remove("hidden");
+        spellName.classList.remove("hidden");
+        spellName.classList.remove("wand");
+        spellName.classList.add("wand-bottom");
+      }
+    });
+  };
 };
 
 spellList();
