@@ -132,7 +132,7 @@ document.getElementById("search-container").appendChild(clearButton);
 
 const showSearchedSpells = (e) => {
     const allSpells = document.querySelectorAll("#spells .spell__container");
-    console.log(e.target.value);
+
     allSpells.forEach((spellContainer) => {
         const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
 
@@ -347,7 +347,6 @@ const spellList = () => {
     });
 
     searchInput.oninput = (e) => showSearchedSpells(e);
-    // searchInput.onkeydown = (e) => showSearchedSpells(e);
 
     clearButton.onclick = () => handleClickOnClear();
 };
