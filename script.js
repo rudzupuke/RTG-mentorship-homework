@@ -132,7 +132,7 @@ document.getElementById("search-container").appendChild(clearButton);
 
 const showSearchedSpells = (e) => {
     const allSpells = document.querySelectorAll("#spells .spell__container");
-
+    console.log(e.target.value);
     allSpells.forEach((spellContainer) => {
         const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
 
@@ -143,6 +143,7 @@ const showSearchedSpells = (e) => {
                 .includes(e.target.value.toLowerCase())
         ) {
             showSpell(spellName, spellDesc);
+            spellContainer.classList.remove("hidden");
         } else if (e.target.value.length === 0) {
             spellContainer.classList.remove("hidden");
             closeSpell(spellName, spellDesc);
@@ -346,6 +347,7 @@ const spellList = () => {
     });
 
     searchInput.oninput = (e) => showSearchedSpells(e);
+    // searchInput.onkeydown = (e) => showSearchedSpells(e);
 
     clearButton.onclick = () => handleClickOnClear();
 };
