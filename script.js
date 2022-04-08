@@ -176,7 +176,7 @@ const checkIfOtherSpellsStillOpen = () => {
         }
     });
 
-    if (openedSpells > 0) {
+    if (openedSpells > 1) {
         return true;
     } else if (openedSpells <= 1) {
         return false;
