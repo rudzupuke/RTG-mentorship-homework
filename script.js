@@ -82,8 +82,12 @@ const selectSpellNameAndDesc = (spellContainer) => {
     return { spellName, spellDesc };
 };
 
+const getAllSpells = () => {
+    return document.querySelectorAll(".spell__container");
+};
+
 const closeOtherSpellsDesc = (currentSpellDesc) => {
-    const allSpells = document.querySelectorAll(".spell__container");
+    const allSpells = getAllSpells();
 
     allSpells.forEach((spellContainer) => {
         const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
@@ -96,6 +100,8 @@ const closeOtherSpellsDesc = (currentSpellDesc) => {
     });
 };
 
+let allSpellsOpen = false;
+
 const showAllSpells = () => {
     const allSpells = document.querySelectorAll("#spells .spell__container");
 
@@ -104,6 +110,7 @@ const showAllSpells = () => {
 
         showSpell(spellName, spellDesc);
     });
+    allSpellsOpen = true;
 };
 const closeAllSpells = () => {
     const allSpells = document.querySelectorAll("#spells .spell__container");
@@ -113,6 +120,7 @@ const closeAllSpells = () => {
 
         closeSpell(spellName, spellDesc);
     });
+    allSpellsOpen = false;
 };
 
 ///// SEARCH INPUT ////
@@ -153,6 +161,25 @@ const handleClickOnClear = () => {
         spellContainer.classList.remove("hidden");
     });
     closeAllSpells();
+};
+
+const checkIfOtherSpellsStillOpen = () => {
+    const allSpellNames = document.querySelectorAll("#spells .spells__name");
+    let openedSpells = 0;
+    let closedSpells = 0;
+    allSpellNames.forEach((spellName) => {
+        if (spellName.classList.contains("wand-bottom")) {
+            openedSpells += 1;
+        } else {
+            closedSpells += 1;
+        }
+    });
+
+    if (openedSpells > 0) {
+        return true;
+    } else if (openedSpells <= 1) {
+        return false;
+    }
 };
 
 const spellList = () => {
@@ -281,9 +308,18 @@ const spellList = () => {
     ];
 
     const allSpellsContainer = getAllSpellContainer();
+
     const handleClickOnSpell = (spellsName, spellsDesc) => {
-        closeOtherSpellsDesc(spellsDesc);
-        toggleSpell(spellsDesc, spellsName);
+        if (allSpellsOpen) {
+            toggleSpell(spellsDesc, spellsName);
+
+            if (!checkIfOtherSpellsStillOpen()) {
+                allSpellsOpen = false;
+            }
+        } else {
+            closeOtherSpellsDesc(spellsDesc);
+            toggleSpell(spellsDesc, spellsName);
+        }
     };
 
     spellData.forEach((spellEntry) => {
