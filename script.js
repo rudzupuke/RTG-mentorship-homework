@@ -143,6 +143,7 @@ const showSearchedSpells = (e) => {
                 .includes(e.target.value.toLowerCase())
         ) {
             showSpell(spellName, spellDesc);
+            spellContainer.classList.remove("hidden");
         } else if (e.target.value.length === 0) {
             spellContainer.classList.remove("hidden");
             closeSpell(spellName, spellDesc);
