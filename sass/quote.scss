@@ -1,0 +1,41 @@
+@use './variables.scss' as v;
+@use './helpers.scss' as h;
+
+.quote-container {
+    @include h.center-content;
+    height: 30vh;
+    color: v.$blue;
+
+    @media (max-width: v.$medium) {
+        max-width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+.quote {
+    text-align: center;
+    font-size: 1.2rem;
+    padding-bottom: 0.5em;
+
+    @media (max-width: v.$medium) {
+        font-size: 1rem;
+    }
+}
+
+.author-link {
+    color: v.$brown;
+    text-decoration: none;
+
+    @media (max-width: v.$medium) {
+        font-size: 0.875rem;
+    }
+
+    &:visited {
+        color: v.$brown;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,35 @@
+@use './variables.scss' as v;
+@use './helpers.scss' as h;
+
+.video-container {
+    flex-direction: column-reverse;
+    @include h.center-content;
+    height: 70vh;
+    background-image: linear-gradient(
+            rgba(68, 53, 44, 0.6),
+            rgba(68, 53, 44, 0.6)
+        ),
+        url(images/background-2.jpg);
+    background-size: cover;
+    background-position: center 40%;
+    background-attachment: fixed;
+    color: v.$white;
+}
+
+.video-heading {
+    margin-top: 0.5em;
+    font-weight: 500;
+
+    @media (max-width: v.$medium) {
+        font-size: 1rem;
+        word-wrap: break-word;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+@media (max-width: v.$medium) {
+    iframe {
+        width: 300px;
+    }
+}

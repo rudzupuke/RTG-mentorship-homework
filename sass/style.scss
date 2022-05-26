@@ -1,0 +1,41 @@
+@use './footer.scss';
+@use './header.scss';
+@use './links.scss';
+@use './quote.scss';
+@use './spells.scss';
+@use './video.scss';
+@use './variables.scss' as v;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+.button {
+    background-color: v.$brown;
+    border: 1px solid v.$brown;
+    color: v.$white;
+    font-size: 0.875rem;
+    padding: 0.8em 1.5em;
+    border-radius: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.5s ease-in;
+    cursor: pointer;
+
+    &:hover {
+        background-color: v.$white;
+        border: 1px solid v.$brown;
+        color: v.$brown;
+    }
+}

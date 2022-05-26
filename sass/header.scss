@@ -1,0 +1,44 @@
+@use './variables.scss' as v;
+@use './helpers.scss' as h;
+
+header {
+    height: 75vh;
+    background-image: url(./images/background.jpg);
+    background-size: cover;
+    background-position: center 40%;
+    background-attachment: fixed;
+    @include h.center-content;
+
+    h1 {
+        font-family: "Cinzel", serif;
+        color: v.$white;
+        font-size: 3.125rem;
+        font-weight: 500;
+        letter-spacing: 3px;
+        @media (max-width: v.$medium) {
+            font-size: 2.5rem;
+        }
+    }
+}
+
+.header-container {
+    text-align: center;
+}
+
+.learn-spells-container {
+    margin: 0 auto;
+    flex-direction: column;
+    @include h.center-content;
+    gap: 0.3rem;
+    padding: 1em;
+}
+
+.search-input {
+    padding: 0.8em 1.5em;
+    border-radius: 9px;
+    border: 1px solid v.$brown;
+    margin-right: 0.3rem;
+    outline: none;
+    color: v.$lightBrown;
+}
+

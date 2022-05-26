@@ -1,0 +1,64 @@
+@use './variables.scss' as v;
+@use './helpers.scss' as h;
+
+.spells {
+    @include h.center-container;
+    color: v.$blue;
+}
+
+.spell__container {
+    border-radius: 10px;
+    border: 1px solid v.$transparent;
+    margin-bottom: 0.3em;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+.spell__container:hover {
+    border: 1px solid v.$blue;
+}
+
+.spells__name {
+    font-size: 1.5rem;
+    margin-bottom: 0.3em;
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+}
+
+.spells__name.wand::before {
+    content: "🪄 ";
+    margin-right: 0.6em;
+    display: inline-block;
+    transform: rotate(10deg);
+    transition: 0.5s;
+}
+.spells__name.wand-bottom::before {
+    content: "🪄 ";
+    margin-right: 0.6em;
+    display: inline-block;
+    transform: rotate(100deg);
+    transition: 0.5s;
+}
+
+.spells__description {
+    margin-bottom: 0.6em;
+    margin-left: 2.9rem;
+
+    @media (max-width: v.$medium) {
+        margin-bottom: 2rem;
+        margin-left: 0;
+    }
+
+    ul {
+        margin: 1em 0;
+
+        @media (max-width: v.$medium) {
+            margin: 0;
+            padding: 10px 20px 0 20px;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}

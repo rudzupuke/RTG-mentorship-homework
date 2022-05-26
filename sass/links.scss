@@ -1,0 +1,23 @@
+@use './variables.scss' as v;
+@use './helpers.scss' as h;
+
+.links {
+    @include h.center-content;
+    gap: 1rem;
+    background-color: v.$lightBrown;
+    padding: 2em;
+
+    a {
+        color: v.$white;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    @media (max-width: v.$medium) {
+        font-size: 12px;
+    }
+}
+

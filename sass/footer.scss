@@ -1,0 +1,25 @@
+@use './variables.scss' as v;
+
+footer {
+    position: sticky;
+    bottom: 0;
+    background-color: v.$beige;
+    padding: 1em;
+
+     a {
+        color: v.$brown;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    
+    
+}
+
+.footer-text {
+    color: v.$brown;
+    font-size: 0.75rem;
+    text-align: center;
+}
