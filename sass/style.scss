@@ -1,10 +1,11 @@
-@use './footer.scss';
-@use './header.scss';
-@use './links.scss';
-@use './quote.scss';
-@use './spells.scss';
-@use './video.scss';
-@use './variables.scss' as v;
+@use "./footer.scss";
+@use "./nav.scss";
+@use "./header.scss";
+@use "./links.scss";
+@use "./quote.scss";
+@use "./spells.scss";
+@use "./video.scss";
+@use "./variables.scss" as v;
 
 *,
 *::before,
@@ -19,6 +20,8 @@ html {
 
 body {
     font-family: "Montserrat", sans-serif;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 .button {
@@ -38,4 +41,20 @@ body {
         border: 1px solid v.$brown;
         color: v.$brown;
     }
+
+    &:focus {
+        transition: none;
+        outline: v.$thick-border;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }

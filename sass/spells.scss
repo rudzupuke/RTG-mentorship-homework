@@ -1,5 +1,33 @@
-@use './variables.scss' as v;
-@use './helpers.scss' as h;
+@use "./variables.scss" as v;
+@use "./helpers.scss" as h;
+
+.learn-spells-container {
+    margin: 0 auto;
+    flex-direction: column;
+    @include h.center-content;
+    gap: 0.3rem;
+    padding: 1em;
+
+    @media (max-width: 470px) {
+        & > div {
+            @include h.center-content;
+            gap: 0.3rem;
+        }
+    }
+}
+
+.search-input {
+    padding: 0.8em 1.5em;
+    border-radius: 9px;
+    border: 1px solid v.$brown;
+    margin-right: 0.3rem;
+    outline: none;
+    color: v.$lightBrown;
+
+    &:focus {
+        outline: v.$thick-border;
+    }
+}
 
 .spells {
     @include h.center-container;
@@ -27,6 +55,7 @@
 
 .spells__name.wand::before {
     content: "🪄 ";
+    content: "🪄 " / "";
     margin-right: 0.6em;
     display: inline-block;
     transform: rotate(10deg);
@@ -34,6 +63,7 @@
 }
 .spells__name.wand-bottom::before {
     content: "🪄 ";
+    content: "🪄 " / "";
     margin-right: 0.6em;
     display: inline-block;
     transform: rotate(100deg);

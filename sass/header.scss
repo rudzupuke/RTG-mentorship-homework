@@ -1,5 +1,5 @@
-@use './variables.scss' as v;
-@use './helpers.scss' as h;
+@use "./variables.scss" as v;
+@use "./helpers.scss" as h;
 
 header {
     height: 75vh;
@@ -24,21 +24,3 @@ header {
 .header-container {
     text-align: center;
 }
-
-.learn-spells-container {
-    margin: 0 auto;
-    flex-direction: column;
-    @include h.center-content;
-    gap: 0.3rem;
-    padding: 1em;
-}
-
-.search-input {
-    padding: 0.8em 1.5em;
-    border-radius: 9px;
-    border: 1px solid v.$brown;
-    margin-right: 0.3rem;
-    outline: none;
-    color: v.$lightBrown;
-}
-

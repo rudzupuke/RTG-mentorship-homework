@@ -1,4 +1,4 @@
-@use './variables.scss' as v;
+@use "./variables.scss" as v;
 
 footer {
     position: sticky;
@@ -6,7 +6,7 @@ footer {
     background-color: v.$beige;
     padding: 1em;
 
-     a {
+    a {
         color: v.$brown;
         text-decoration: none;
 
@@ -14,8 +14,6 @@ footer {
             text-decoration: underline;
         }
     }
-    
-    
 }
 
 .footer-text {

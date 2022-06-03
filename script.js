@@ -24,7 +24,7 @@ const createSearchClearButton = () => {
 ///// CREATING SPELL CONTAINERS /////
 
 const getAllSpellContainer = () => {
-    const spellsElement = document.getElementById("spells");
+    const spellsElement = document.getElementById("spells-container");
     spellsElement.innerHTML = "";
 
     return spellsElement;
@@ -103,7 +103,9 @@ const closeOtherSpellsDesc = (currentSpellDesc) => {
 let allSpellsOpen = false;
 
 const showAllSpells = () => {
-    const allSpells = document.querySelectorAll("#spells .spell__container");
+    const allSpells = document.querySelectorAll(
+        "#spells-container .spell__container"
+    );
 
     allSpells.forEach((spellContainer) => {
         const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
@@ -113,7 +115,9 @@ const showAllSpells = () => {
     allSpellsOpen = true;
 };
 const closeAllSpells = () => {
-    const allSpells = document.querySelectorAll("#spells .spell__container");
+    const allSpells = document.querySelectorAll(
+        "#spells-container .spell__container"
+    );
 
     allSpells.forEach((spellContainer) => {
         const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
@@ -131,7 +135,9 @@ const clearButton = createSearchClearButton();
 document.getElementById("search-container").appendChild(clearButton);
 
 const showSearchedSpells = (e) => {
-    const allSpells = document.querySelectorAll("#spells .spell__container");
+    const allSpells = document.querySelectorAll(
+        "#spells-container .spell__container"
+    );
 
     allSpells.forEach((spellContainer) => {
         const { spellName, spellDesc } = selectSpellNameAndDesc(spellContainer);
@@ -155,7 +161,9 @@ const showSearchedSpells = (e) => {
 };
 
 const handleClickOnClear = () => {
-    const allSpells = document.querySelectorAll("#spells .spell__container");
+    const allSpells = document.querySelectorAll(
+        "#spells-container .spell__container"
+    );
     searchInput.value = "";
 
     allSpells.forEach((spellContainer) => {
@@ -165,7 +173,9 @@ const handleClickOnClear = () => {
 };
 
 const checkIfOtherSpellsStillOpen = () => {
-    const allSpellNames = document.querySelectorAll("#spells .spells__name");
+    const allSpellNames = document.querySelectorAll(
+        "#spells-container .spells__name"
+    );
     let openedSpells = 0;
     let closedSpells = 0;
     allSpellNames.forEach((spellName) => {
@@ -352,3 +362,20 @@ const spellList = () => {
 };
 
 spellList();
+
+//// MOBILE NAVIGATION ////
+
+const navButton = document.querySelector(".nav__mobile-toggle");
+const navList = document.querySelector(".nav__items");
+
+const showNavList = () => {
+    if (navList.getAttribute("data-visible") === "false") {
+        navList.setAttribute("data-visible", "true");
+        navButton.setAttribute("aria-expanded", "true");
+    } else {
+        navList.setAttribute("data-visible", "false");
+        navButton.setAttribute("aria-expanded", "false");
+    }
+};
+
+navButton.onclick = () => showNavList();
