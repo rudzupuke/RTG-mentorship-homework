@@ -88,12 +88,12 @@ footer a:hover {
     margin: 0.8rem;
     cursor: pointer;
     border: none;
-    background: url("../images/menu-icon.svg");
+    background: url("./images/menu-icon.svg");
     background-repeat: no-repeat;
     background-size: contain;
   }
   .nav__mobile-toggle[aria-expanded=true] {
-    background: url("../images/icons8-close.svg");
+    background: url("./images/icons8-close.svg");
   }
 }
 header {
