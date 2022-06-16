@@ -39,18 +39,24 @@ const createOneSpellContainer = (spellsName, spellsDesc) => {
     return spellContainer;
 };
 
-const createSpellsName = (spell) => {
+const createSpellsName = (spell, index) => {
     const spellsName = document.createElement("button");
     spellsName.className = "spells__name wand";
     spellsName.innerHTML = spell;
+    spellsName.setAttribute("id", `spell-${index}`);
+    spellsName.setAttribute("arica-controls", `description-${index}`);
 
     return spellsName;
 };
 
-const createSpellsDesc = (description) => {
+const createSpellsDesc = (description, index) => {
     const spellsDesc = document.createElement("div");
     spellsDesc.className = "spells__description hidden";
     spellsDesc.innerHTML = description;
+    spellsDesc.setAttribute("id", `description-${index}`);
+    spellsDesc.setAttribute("aria-expanded", "false");
+    spellsDesc.setAttribute("aria-role", "region");
+    spellsDesc.setAttribute("aria-labelledby", `spell-${index}`);
 
     return spellsDesc;
 };
@@ -61,16 +67,23 @@ const toggleSpell = (spellsDesc, spellsName) => {
     spellsName.classList.toggle("wand-bottom");
     spellsName.classList.toggle("wand");
     spellsDesc.classList.toggle("hidden");
+    if (spellsDesc.getAttribute("aria-expanded") === "false") {
+        spellsDesc.setAttribute("aria-expanded", "true");
+    } else {
+        spellsDesc.setAttribute("aria-expanded", "false");
+    }
 };
 
 const closeSpell = (spellName, spellDesc) => {
     spellDesc.classList.add("hidden");
+    spellDesc.setAttribute("aria-expanded", "false");
     spellName.classList.remove("wand-bottom");
     spellName.classList.add("wand");
 };
 
 const showSpell = (spellName, spellDesc) => {
     spellDesc.classList.remove("hidden");
+    spellDesc.setAttribute("aria-expanded", "true");
     spellName.classList.add("wand-bottom");
     spellName.classList.remove("wand");
 };
@@ -333,11 +346,11 @@ const spellList = () => {
         }
     };
 
-    spellData.forEach((spellEntry) => {
+    spellData.forEach((spellEntry, index) => {
         const { spell, description } = spellEntry.en;
 
-        const spellsName = createSpellsName(spell);
-        const spellsDesc = createSpellsDesc(description);
+        const spellsName = createSpellsName(spell, index);
+        const spellsDesc = createSpellsDesc(description, index);
 
         spellsName.onclick = () => {
             handleClickOnSpell(spellsName, spellsDesc);
