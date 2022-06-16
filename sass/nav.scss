@@ -13,8 +13,6 @@
         @include h.center-container;
         display: flex;
         list-style-type: none;
-        padding: 0;
-        width: 100%;
         justify-content: space-between;
 
         li {
@@ -23,7 +21,6 @@
                 text-decoration: none;
                 color: v.$white;
                 text-transform: uppercase;
-                font-size: 1.2rem;
                 letter-spacing: 1px;
 
                 &:hover {
@@ -43,20 +40,21 @@
         padding-right: 0;
         width: 100vw;
         flex-direction: column;
-        align-items: flex-end;
-        justify-content: flex-end;
         background-color: transparent;
         backdrop-filter: none;
+        position: absolute;
+        padding-top: 0;
 
         &__items {
             flex-direction: column;
             justify-content: center;
+            gap: 2rem;
             width: 100vw;
             text-align: center;
             backdrop-filter: blur(10px);
             transform: translateX(100%);
             height: 75vh;
-            transition: transform 300ms ease-in;
+            transition: transform 400ms ease-in;
         }
 
         &__items[data-visible="true"] {
