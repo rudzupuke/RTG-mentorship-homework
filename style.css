@@ -20,39 +20,35 @@ footer a:hover {
 }
 
 .nav {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(49, 42, 42, 0.2);
+  background-color: #263137;
   backdrop-filter: blur(10px);
-  padding-right: 2rem;
-  padding-left: 0.2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
   overflow-x: hidden;
 }
 .nav__items {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   list-style-type: none;
   padding: 0;
+  width: 100%;
+  justify-content: space-between;
 }
 .nav__items li a {
   display: block;
   text-decoration: none;
-  padding: 2rem 1.5rem;
   color: #ffffff;
   text-transform: uppercase;
+  font-size: 1.2rem;
   letter-spacing: 1px;
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 400ms ease-in;
 }
 .nav__items li a:hover {
-  border-bottom: 2px solid #ffffff;
-}
-.nav__items li a:active {
-  background-color: aliceblue;
+  text-decoration: underline;
 }
 .nav__mobile-toggle {
   display: none;
