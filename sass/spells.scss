@@ -32,6 +32,10 @@
 .spells {
     @include h.center-container;
     color: v.$blue;
+
+    ul {
+        list-style-type: none;
+    }
 }
 
 .spell__container {
@@ -51,6 +55,9 @@
     margin-bottom: 0.3em;
     font-family: "Cinzel", serif;
     font-weight: 600;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
 }
 
 .spells__name.wand::before {

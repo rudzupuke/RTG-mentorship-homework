@@ -31,7 +31,7 @@ const getAllSpellContainer = () => {
 };
 
 const createOneSpellContainer = (spellsName, spellsDesc) => {
-    const spellContainer = document.createElement("div");
+    const spellContainer = document.createElement("li");
     spellContainer.className = "spell__container";
     spellContainer.append(spellsName);
     spellContainer.append(spellsDesc);
@@ -40,7 +40,7 @@ const createOneSpellContainer = (spellsName, spellsDesc) => {
 };
 
 const createSpellsName = (spell) => {
-    const spellsName = document.createElement("div");
+    const spellsName = document.createElement("button");
     spellsName.className = "spells__name wand";
     spellsName.innerHTML = spell;
 

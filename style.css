@@ -226,6 +226,9 @@ header h1 {
   margin: 0 auto;
   color: #191635;
 }
+.spells ul {
+  list-style-type: none;
+}
 
 .spell__container {
   border-radius: 10px;
@@ -244,6 +247,9 @@ header h1 {
   margin-bottom: 0.3em;
   font-family: "Cinzel", serif;
   font-weight: 600;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 .spells__name.wand::before {
